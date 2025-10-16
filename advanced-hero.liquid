@@ -1,0 +1,822 @@
+{% comment %}
+  Advanced Hero Section - Premium
+  Features: Video/image backgrounds, animations, parallax, full customization
+{% endcomment %}
+
+<style>
+/* Advanced Hero Section */
+.hero-{{ section.id }} {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: {{ section.settings.height_mobile }}px;
+}
+
+@media screen and (min-width: 750px) {
+  .hero-{{ section.id }} {
+    min-height: {{ section.settings.height_desktop }}px;
+  }
+}
+
+/* Media Container */
+.hero-{{ section.id }} .hero__media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-{{ section.id }} .hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Video Wrapper */
+.hero-{{ section.id }} .hero__video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-{{ section.id }} .hero__video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .hero-{{ section.id }} .hero__video {
+    height: 56.25vw;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .hero-{{ section.id }} .hero__video {
+    width: 177.78vh;
+  }
+}
+
+/* Mobile: hide video, show image */
+@media screen and (max-width: 749px) {
+  .hero-{{ section.id }} .hero__video-wrapper {
+    display: none;
+  }
+}
+
+.hero-{{ section.id }} .hero__video-fallback {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .hero-{{ section.id }} .hero__video-fallback {
+    display: block !important;
+  }
+}
+
+/* Parallax effect */
+.hero-{{ section.id }}.hero--parallax .hero__image {
+  height: 120%;
+  will-change: transform;
+}
+
+/* Overlay */
+.hero-{{ section.id }} .hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  {% if section.settings.gradient_overlay %}
+    background: linear-gradient(
+      {{ section.settings.gradient_angle }}deg,
+      {{ section.settings.gradient_color_1 | color_modify: 'alpha', section.settings.overlay_opacity | divided_by: 100.0 }},
+      {{ section.settings.gradient_color_2 | color_modify: 'alpha', section.settings.overlay_opacity | divided_by: 100.0 }}
+    );
+  {% else %}
+    background: {{ section.settings.overlay_color | color_modify: 'alpha', section.settings.overlay_opacity | divided_by: 100.0 }};
+  {% endif %}
+}
+
+/* Content Wrapper */
+.hero-{{ section.id }} .hero__content-wrapper {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: {{ section.settings.height_mobile }}px;
+  padding: 3rem 1.6rem;
+}
+
+@media screen and (min-width: 750px) {
+  .hero-{{ section.id }} .hero__content-wrapper {
+    min-height: {{ section.settings.height_desktop }}px;
+    padding: 4rem 2rem;
+  }
+}
+
+/* Content */
+.hero-{{ section.id }} .hero__content {
+  max-width: 800px;
+  width: 100%;
+  color: {{ section.settings.text_color }};
+  text-align: {{ section.settings.content_alignment }};
+  opacity: 0;
+  animation: fadeUp-{{ section.id }} 0.8s ease forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeUp-{{ section.id }} {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-{{ section.id }} .hero__content--center {
+  margin: 0 auto;
+}
+
+.hero-{{ section.id }} .hero__content--right {
+  margin-left: auto;
+}
+
+/* Typography */
+.hero-{{ section.id }} .hero__subheading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  opacity: 0.95;
+}
+
+@media screen and (min-width: 750px) {
+  .hero-{{ section.id }} .hero__subheading {
+    font-size: 1.4rem;
+  }
+}
+
+.hero-{{ section.id }} .hero__heading {
+  margin-bottom: 1.6rem;
+  line-height: 1.1;
+  font-weight: 700;
+  font-size: 2.4rem;
+}
+
+@media screen and (min-width: 750px) {
+  .hero-{{ section.id }} .hero__heading {
+    font-size: {{ section.settings.heading_size }};
+    margin-bottom: 2rem;
+  }
+}
+
+.hero-{{ section.id }} .hero__text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2.4rem;
+  opacity: 0.95;
+}
+
+@media screen and (min-width: 750px) {
+  .hero-{{ section.id }} .hero__text {
+    font-size: 1.125rem;
+    margin-bottom: 2.8rem;
+  }
+}
+
+/* Buttons Container */
+.hero-{{ section.id }} .hero__buttons {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.hero-{{ section.id }} .hero__content--center .hero__buttons {
+  justify-content: center;
+}
+
+.hero-{{ section.id }} .hero__content--right .hero__buttons {
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 749px) {
+  .hero-{{ section.id }} .hero__buttons {
+    gap: 1rem;
+    flex-direction: {{ section.settings.button_layout_mobile }};
+  }
+  
+  {% if section.settings.button_layout_mobile == 'column' %}
+    .hero-{{ section.id }} .hero__button {
+      width: 100%;
+    }
+  {% endif %}
+}
+
+/* Button Base */
+.hero-{{ section.id }} .hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 2.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: {{ section.settings.button_border_radius }}px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 750px) {
+  .hero-{{ section.id }} .hero__button {
+    padding: 1.3rem 3.2rem;
+    font-size: 1.0625rem;
+  }
+}
+
+/* Button Styles */
+.hero-{{ section.id }} .hero__button--primary {
+  background: {{ section.settings.button_primary_bg }};
+  color: {{ section.settings.button_primary_text }};
+  border-color: {{ section.settings.button_primary_bg }};
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hero-{{ section.id }} .hero__button--primary:hover {
+  background: {{ section.settings.button_primary_bg | color_lighten: 5 }};
+  border-color: {{ section.settings.button_primary_bg | color_lighten: 5 }};
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero-{{ section.id }} .hero__button--secondary {
+  background: {{ section.settings.button_secondary_bg }};
+  color: {{ section.settings.button_secondary_text }};
+  border-color: {{ section.settings.button_secondary_bg }};
+  backdrop-filter: blur(10px);
+}
+
+.hero-{{ section.id }} .hero__button--secondary:hover {
+  background: {{ section.settings.button_secondary_bg | color_lighten: 8 }};
+  border-color: {{ section.settings.button_secondary_bg | color_lighten: 8 }};
+  transform: translateY(-2px);
+}
+
+.hero-{{ section.id }} .hero__button--outline {
+  background: transparent;
+  color: {{ section.settings.button_outline_text }};
+  border-color: {{ section.settings.button_outline_text }};
+}
+
+.hero-{{ section.id }} .hero__button--outline:hover {
+  background: {{ section.settings.button_outline_text }};
+  color: {{ section.settings.button_outline_bg }};
+  transform: translateY(-2px);
+}
+
+/* Scroll Indicator */
+.hero-{{ section.id }} .hero__scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  border: none;
+  color: {{ section.settings.text_color }};
+  cursor: pointer;
+  padding: 0.8rem;
+  animation: bounce-{{ section.id }} 2.5s infinite;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  z-index: 4;
+}
+
+.hero-{{ section.id }} .hero__scroll-indicator:hover {
+  opacity: 1;
+}
+
+@keyframes bounce-{{ section.id }} {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-12px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-6px);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-{{ section.id }} .hero__content,
+  .hero-{{ section.id }} .hero__button,
+  .hero-{{ section.id }} .hero__scroll-indicator {
+    animation: none;
+    transition: none;
+  }
+  
+  .hero-{{ section.id }}.hero--parallax .hero__image {
+    transform: none !important;
+  }
+}
+</style>
+
+<section class="hero-{{ section.id }} {% if section.settings.enable_parallax %}hero--parallax{% endif %}"
+         data-section-id="{{ section.id }}"
+         data-section-type="advanced-hero">
+  
+  <div class="hero__media">
+    {% if section.settings.video_url != blank %}
+      {%- liquid
+        assign video_id = section.settings.video_url.id
+        assign video_type = section.settings.video_url.type
+      -%}
+      
+      <div class="hero__video-wrapper">
+        {% if video_type == 'youtube' %}
+          <iframe
+            src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1&mute=1&loop=1&playlist={{ video_id }}&controls=0&showinfo=0&rel=0&modestbranding=1"
+            class="hero__video"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+            title="{{ section.settings.heading | default: 'Hero video' | escape }}">
+          </iframe>
+        {% elsif video_type == 'vimeo' %}
+          <iframe
+            src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1&muted=1&loop=1&background=1&controls=0"
+            class="hero__video"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+            title="{{ section.settings.heading | default: 'Hero video' | escape }}">
+          </iframe>
+        {% endif %}
+      </div>
+      
+      {% comment %} Mobile fallback {% endcomment %}
+      <div class="hero__video-fallback">
+        {% if section.settings.image != blank %}
+          <div class="hero__image">
+            {{ section.settings.image | image_url: width: 1920 | image_tag:
+              loading: 'eager',
+              width: section.settings.image.width,
+              height: section.settings.image.height,
+              sizes: '100vw',
+              widths: '375, 550, 750, 1100, 1500, 1780, 2000'
+            }}
+          </div>
+        {% else %}
+          <div class="hero__image">
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {% endif %}
+      </div>
+    {% elsif section.settings.image != blank %}
+      <div class="hero__image">
+        {{ section.settings.image | image_url: width: 1920 | image_tag:
+          loading: 'eager',
+          width: section.settings.image.width,
+          height: section.settings.image.height,
+          sizes: '100vw',
+          widths: '375, 550, 750, 1100, 1500, 1780, 2000'
+        }}
+      </div>
+    {% else %}
+      <div class="hero__image">
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {% endif %}
+    
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="hero__content-wrapper page-width">
+    <div class="hero__content hero__content--{{ section.settings.content_alignment }}">
+      
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'subheading' %}
+            {% if block.settings.subheading != blank %}
+              <p class="hero__subheading" {{ block.shopify_attributes }}>
+                {{ block.settings.subheading }}
+              </p>
+            {% endif %}
+
+          {% when 'heading' %}
+            {% if block.settings.heading != blank %}
+              <h1 class="hero__heading" {{ block.shopify_attributes }}>
+                {{ block.settings.heading }}
+              </h1>
+            {% endif %}
+
+          {% when 'text' %}
+            {% if block.settings.text != blank %}
+              <div class="hero__text" {{ block.shopify_attributes }}>
+                {{ block.settings.text }}
+              </div>
+            {% endif %}
+
+          {% when 'buttons' %}
+            <div class="hero__buttons" {{ block.shopify_attributes }}>
+              {% if block.settings.button_label_1 != blank %}
+                <a href="{{ block.settings.button_link_1 }}" 
+                   class="hero__button hero__button--{{ block.settings.button_style_1 }}">
+                  {{ block.settings.button_label_1 }}
+                </a>
+              {% endif %}
+              
+              {% if block.settings.button_label_2 != blank %}
+                <a href="{{ block.settings.button_link_2 }}" 
+                   class="hero__button hero__button--{{ block.settings.button_style_2 }}">
+                  {{ block.settings.button_label_2 }}
+                </a>
+              {% endif %}
+            </div>
+        {% endcase %}
+      {% endfor %}
+
+      {% if section.settings.show_scroll_indicator %}
+        <button class="hero__scroll-indicator" aria-label="Scroll down">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M19 12l-7 7-7-7"/>
+          </svg>
+        </button>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    const section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
+
+    // Parallax effect
+    {% if section.settings.enable_parallax %}
+      const parallaxImage = section.querySelector('.hero__image');
+      if (parallaxImage && window.innerWidth > 749) {
+        const handleParallax = () => {
+          const scrolled = window.pageYOffset;
+          const elementOffset = section.offsetTop;
+          const distance = scrolled - elementOffset;
+          
+          if (distance > -section.offsetHeight && distance < window.innerHeight) {
+            const rate = distance * 0.5;
+            parallaxImage.style.transform = `translate3d(0, ${rate}px, 0)`;
+          }
+        };
+        
+        window.addEventListener('scroll', handleParallax, { passive: true });
+      }
+    {% endif %}
+
+    // Scroll indicator
+    const scrollBtn = section.querySelector('.hero__scroll-indicator');
+    if (scrollBtn) {
+      scrollBtn.addEventListener('click', () => {
+        const nextSection = section.nextElementSibling;
+        if (nextSection) {
+          nextSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Advanced Hero",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Height (mobile)",
+      "default": 450
+    },
+    {
+      "type": "range",
+      "id": "height_desktop",
+      "min": 400,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "label": "Height (desktop)",
+      "default": 600
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "accept": ["youtube", "vimeo"],
+      "label": "Background video",
+      "info": "Video plays on desktop, image shows on mobile"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax",
+      "label": "Enable parallax effect",
+      "default": false,
+      "info": "Creates depth effect as you scroll"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "checkbox",
+      "id": "gradient_overlay",
+      "label": "Use gradient overlay",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_1",
+      "label": "Gradient start color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_2",
+      "label": "Gradient end color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "range",
+      "id": "gradient_angle",
+      "min": 0,
+      "max": 360,
+      "step": 15,
+      "unit": "deg",
+      "label": "Gradient angle",
+      "default": 135
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "2.8rem", "label": "Small" },
+        { "value": "3.6rem", "label": "Medium" },
+        { "value": "5.2rem", "label": "Large" },
+        { "value": "7rem", "label": "Extra Large" }
+      ],
+      "default": "5.2rem"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "select",
+      "id": "button_layout_mobile",
+      "label": "Button layout (mobile)",
+      "options": [
+        { "value": "row", "label": "Side by side" },
+        { "value": "column", "label": "Stacked" }
+      ],
+      "default": "column"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Button border radius",
+      "default": 5
+    },
+    {
+      "type": "color",
+      "id": "button_primary_bg",
+      "label": "Primary button background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_primary_text",
+      "label": "Primary button text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_secondary_bg",
+      "label": "Secondary button background",
+      "default": "rgba(255, 255, 255, 0.1)"
+    },
+    {
+      "type": "color",
+      "id": "button_secondary_text",
+      "label": "Secondary button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_outline_text",
+      "label": "Outline button text/border",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_outline_bg",
+      "label": "Outline button hover background",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Additional Features"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_scroll_indicator",
+      "label": "Show scroll indicator",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Welcome to our store"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Elevate Your Style"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Description",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Description",
+          "default": "<p>Discover our latest collection of premium products</p>"
+        }
+      ]
+    },
+    {
+      "type": "buttons",
+      "name": "Buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label_1",
+          "label": "Button 1 label",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link_1",
+          "label": "Button 1 link"
+        },
+        {
+          "type": "select",
+          "id": "button_style_1",
+          "label": "Button 1 style",
+          "options": [
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" },
+            { "value": "outline", "label": "Outline" }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "text",
+          "id": "button_label_2",
+          "label": "Button 2 label",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "button_link_2",
+          "label": "Button 2 link"
+        },
+        {
+          "type": "select",
+          "id": "button_style_2",
+          "label": "Button 2 style",
+          "options": [
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" },
+            { "value": "outline", "label": "Outline" }
+          ],
+          "default": "outline"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advanced Hero",
+      "blocks": [
+        {
+          "type": "subheading"
+        },
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "buttons"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
