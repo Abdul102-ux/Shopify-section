@@ -1,0 +1,509 @@
+{% comment %}
+  Testimonial Carousel Section - Premium
+  Features: Carousel slider, ratings, smooth animations
+{% endcomment %}
+
+<style>
+.testimonial-carousel-{{ section.id }} {
+  width: 100%;
+  padding: 3rem 1.6rem;
+  background: {{ section.settings.bg_color }};
+}
+
+@media screen and (min-width: 750px) {
+  .testimonial-carousel-{{ section.id }} {
+    padding: 4rem 2rem;
+  }
+}
+
+.testimonial-carousel-{{ section.id }} .section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .testimonial-carousel-{{ section.id }} .section-header {
+    margin-bottom: 4rem;
+  }
+}
+
+.testimonial-carousel-{{ section.id }} .section-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: {{ section.settings.heading_color }};
+}
+
+@media screen and (min-width: 750px) {
+  .testimonial-carousel-{{ section.id }} .section-heading {
+    font-size: 2.8rem;
+  }
+}
+
+.testimonial-carousel-{{ section.id }} .section-description {
+  font-size: 1rem;
+  color: {{ section.settings.description_color }};
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Carousel Container */
+.testimonial-carousel-{{ section.id }} .carousel-wrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.testimonial-carousel-{{ section.id }} .carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 350px;
+}
+
+.testimonial-carousel-{{ section.id }} .testimonial-card {
+  background: {{ section.settings.card_bg }};
+  border-radius: 8px;
+  padding: 2.4rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  position: absolute;
+  width: 100%;
+  max-width: 700px;
+  pointer-events: none;
+}
+
+.testimonial-carousel-{{ section.id }} .testimonial-card.active {
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+  animation: fadeIn-{{ section.id }} 0.6s ease;
+}
+
+@keyframes fadeIn-{{ section.id }} {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .testimonial-carousel-{{ section.id }} .testimonial-card {
+    padding: 3rem 3.2rem;
+  }
+}
+
+/* Testimonial Content */
+.testimonial-carousel-{{ section.id }} .testimonial-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: {{ section.settings.text_color }};
+  margin-bottom: 1.6rem;
+  font-style: italic;
+}
+
+@media screen and (min-width: 750px) {
+  .testimonial-carousel-{{ section.id }} .testimonial-text {
+    font-size: 1.25rem;
+  }
+}
+
+/* Stars */
+.testimonial-carousel-{{ section.id }} .star-rating {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 1.6rem;
+}
+
+.testimonial-carousel-{{ section.id }} .star {
+  color: {{ section.settings.star_color }};
+  font-size: 1.2rem;
+}
+
+/* Author */
+.testimonial-carousel-{{ section.id }} .author-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonial-carousel-{{ section.id }} .author-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: {{ section.settings.author_bg }};
+  overflow: hidden;
+}
+
+.testimonial-carousel-{{ section.id }} .author-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-carousel-{{ section.id }} .author-info {
+  text-align: center;
+}
+
+.testimonial-carousel-{{ section.id }} .author-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: {{ section.settings.text_color }};
+}
+
+.testimonial-carousel-{{ section.id }} .author-title {
+  font-size: 0.9rem;
+  color: {{ section.settings.text_color }};
+  opacity: 0.7;
+}
+
+/* Navigation */
+.testimonial-carousel-{{ section.id }} .carousel-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 2rem;
+}
+
+.testimonial-carousel-{{ section.id }} .carousel-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid {{ section.settings.button_color }};
+  background: transparent;
+  color: {{ section.settings.button_color }};
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.testimonial-carousel-{{ section.id }} .carousel-button:hover {
+  background: {{ section.settings.button_color }};
+  color: {{ section.settings.bg_color }};
+}
+
+/* Dots */
+.testimonial-carousel-{{ section.id }} .carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+}
+
+.testimonial-carousel-{{ section.id }} .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: {{ section.settings.button_color }};
+  opacity: 0.3;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.testimonial-carousel-{{ section.id }} .dot.active {
+  opacity: 1;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-carousel-{{ section.id }} .testimonial-card.active {
+    animation: none;
+  }
+  
+  .testimonial-carousel-{{ section.id }} .carousel-button {
+    transition: none;
+  }
+}
+</style>
+
+<section class="testimonial-carousel-{{ section.id }}" data-section-id="{{ section.id }}">
+  
+  <div class="section-header">
+    {% if section.settings.heading != blank %}
+      <h2 class="section-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    
+    {% if section.settings.description != blank %}
+      <p class="section-description">{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+
+  {% if section.blocks.size > 0 %}
+    <div class="carousel-wrapper">
+      <div class="carousel-container">
+        {% for block in section.blocks %}
+          <div class="testimonial-card {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+            
+            <div class="testimonial-text">
+              "{{ block.settings.testimonial }}"
+            </div>
+
+            {% if block.settings.rating %}
+              <div class="star-rating">
+                {% for i in (1..block.settings.rating) %}
+                  <span class="star">★</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <div class="author-section">
+              {% if block.settings.author_image != blank %}
+                <div class="author-image">
+                  {{ block.settings.author_image | image_url: width: 120 | image_tag:
+                    alt: block.settings.author_name,
+                    loading: 'lazy'
+                  }}
+                </div>
+              {% endif %}
+
+              <div class="author-info">
+                <p class="author-name">{{ block.settings.author_name }}</p>
+                {% if block.settings.author_title != blank %}
+                  <p class="author-title">{{ block.settings.author_title }}</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Navigation -->
+      {% if section.blocks.size > 1 %}
+        <div class="carousel-nav">
+          <button class="carousel-button prev" aria-label="Previous testimonial">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 8 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <div class="carousel-dots">
+            {% for block in section.blocks %}
+              <button class="dot {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}" aria-label="Go to testimonial {{ forloop.index }}"></button>
+            {% endfor %}
+          </div>
+
+          <button class="carousel-button next" aria-label="Next testimonial">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="5 18 12 12 5 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      {% endif %}
+    </div>
+  {% else %}
+    <p style="text-align: center; color: {{ section.settings.text_color }}; opacity: 0.7;">
+      Add testimonial blocks to get started.
+    </p>
+  {% endif %}
+</section>
+
+<script>
+  (function() {
+    const section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
+
+    const cards = section.querySelectorAll('.testimonial-card');
+    const dots = section.querySelectorAll('.dot');
+    const prevBtn = section.querySelector('.prev');
+    const nextBtn = section.querySelector('.next');
+    let currentIndex = 0;
+
+    function showCard(index) {
+      cards.forEach((card, i) => {
+        card.classList.toggle('active', i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+      currentIndex = index;
+    }
+
+    function nextCard() {
+      const newIndex = (currentIndex + 1) % cards.length;
+      showCard(newIndex);
+    }
+
+    function prevCard() {
+      const newIndex = (currentIndex - 1 + cards.length) % cards.length;
+      showCard(newIndex);
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', prevCard);
+    if (nextBtn) nextBtn.addEventListener('click', nextCard);
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', (e) => {
+        const index = parseInt(e.target.dataset.index);
+        showCard(index);
+      });
+    });
+
+    // Auto-rotate (optional)
+    {% if section.settings.auto_rotate %}
+      setInterval(nextCard, {{ section.settings.auto_rotate_delay }}000);
+    {% endif %}
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Testimonial Carousel",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Our Customers Say"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Read real feedback from our satisfied clients"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Testimonial text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star color",
+      "default": "#ffc107"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Navigation button color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "author_bg",
+      "label": "Author image background",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "header",
+      "content": "Carousel Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Auto-rotate testimonials",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "auto_rotate_delay",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Auto-rotate delay",
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "testimonial",
+          "label": "Testimonial text",
+          "default": "Amazing service and support. They really care about their customers!"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Star rating",
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author name",
+          "default": "John Doe"
+        },
+        {
+          "type": "text",
+          "id": "author_title",
+          "label": "Author title",
+          "default": "Customer"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Author image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Carousel",
+      "blocks": [
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
