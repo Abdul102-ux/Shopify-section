@@ -1,25 +1,171 @@
-**README.md description:**
-```
-# Advanced Hero Section for Shopify
+# Shopify Custom Sections Portfolio
 
-Production-ready hero section with premium features:
+A collection of production-ready custom Shopify sections built with Liquid, CSS3, and JavaScript. Each section is fully customizable through the Shopify theme editor.
 
-- Video backgrounds (YouTube/Vimeo) with mobile image fallback
+## Sections Included
+
+### 1. Advanced Hero
+Premium hero section with video backgrounds, parallax scrolling, and smooth animations.
+
+**Features:**
+- Video backgrounds (YouTube/Vimeo) with mobile fallback
 - Parallax scrolling effect
-- Gradient overlay controls with opacity
-- Block-based content system (easy for merchants to customize)
-- Multiple button styles
-- Responsive design
-- Scroll indicator animation
-- Fully accessible
+- Gradient overlay with customizable colors
+- Fade-up animations on page load
+- Animated scroll indicator
+- Multiple button styles (primary, secondary, outline)
+- Block-based content system
+- Fully responsive
 
-## Features
-- Desktop: Video background with smooth animations
-- Mobile: Optimized image display
-- Real-time customization in theme editor
-- Performance optimized
+**Tech:** Shopify Liquid, CSS3, JavaScript  
+**Location:** `/advanced-hero/advanced-hero.liquid`
 
+---
 
-## Tech: 
--Shopify Liquid, CSS3, JavaScript
-```                     
+### 2. Product Grid
+Multi-column product grid with animations, filtering, and customizable layouts.
+
+**Features:**
+- 2-5 column layouts (client controls)
+- Staggered fade-in animations
+- Image hover effects
+- Automatic sale badge display
+- Price display with sale strikethrough
+- Collection selector (choose which products to display)
+- Customizable colors for all elements
+- Mobile responsive (1-2 columns mobile, up to 5 desktop)
+
+**Tech:** Shopify Liquid, CSS3  
+**Location:** `/product-grid/product-grid.liquid`
+
+---
+
+### 3. Testimonial Carousel
+(Coming soon)
+
+---
+
+### 4. Before/After Slider
+(Coming soon)
+
+---
+
+## Installation
+
+### Option 1: Copy Individual Sections
+1. Download the section file (e.g., `advanced-hero.liquid`)
+2. In Shopify admin: Online Store → Themes → Edit code
+3. Go to Sections folder
+4. Create new section and paste the code
+
+### Option 2: Using Shopify CLI
+```bash
+shopify theme pull --store=your-store.myshopify.com
+# Copy section files to your /sections/ folder
+shopify theme dev --store=your-store.myshopify.com
+```
+
+---
+
+## Customization
+
+Each section includes full theme editor controls for:
+- **Colors** - Headings, text, buttons, backgrounds, overlays
+- **Layout** - Column counts, heights, spacing
+- **Typography** - Font sizes, alignment
+- **Animations** - Enable/disable parallax, adjust speeds
+- **Content** - Via block system (easy for non-technical users)
+
+All changes are real-time in the theme editor.
+
+---
+
+## Features Across All Sections
+
+✔️ Smooth animations and transitions  
+✔️ Mobile-first responsive design  
+✔️ Performance optimized  
+✔️ Accessibility compliant (WCAG)  
+✔️ Respects `prefers-reduced-motion`  
+✔️ Full theme editor customization  
+✔️ No external dependencies  
+✔️ Clean, documented code  
+
+---
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+---
+
+## Performance
+
+All sections are optimized for:
+- Fast load times
+- Minimal CSS/JS
+- Lazy loading where applicable
+- Efficient animations (using `transform` and `opacity`)
+- No render-blocking scripts
+
+---
+
+## Code Quality
+
+- Clean, readable Liquid code
+- Semantic HTML
+- Modern CSS (CSS Grid, Flexbox)
+- Vanilla JavaScript (no jQuery)
+- Comprehensive inline comments
+- BEM-style class naming
+
+---
+
+## Screenshots
+
+See individual section folders for screenshots showing:
+- Desktop previews
+- Mobile previews
+- Theme editor customization options
+- Animation examples
+
+---
+
+## Support
+
+Each section is self-contained and can be used independently. No dependencies between sections.
+
+For questions about implementation or customization, refer to the Shopify theme development documentation.
+
+---
+
+## License
+
+These sections are provided as portfolio examples.
+
+---
+
+## Author
+
+Abdul Khaliq  
+Shopify Theme Developer | React Developer
+
+**Links:**
+- GitHub: https://github.com/Abdul102-ux
+- Upwork: [Your Upwork Profile]
+
+---
+
+## Changelog
+
+### v1.0 (Current)
+- Advanced Hero Section
+- Product Grid Section
+
+### v1.1 (Upcoming)
+- Testimonial Carousel Section
+- Before/After Slider Section
