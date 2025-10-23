@@ -41,12 +41,38 @@ Multi-column product grid with animations, filtering, and customizable layouts.
 ---
 
 ### 3. Testimonial Carousel
-(Coming soon)
+Interactive carousel for displaying customer testimonials with ratings and author info.
+
+**Features:**
+- Smooth carousel with prev/next navigation
+- Click-to-navigate dot indicators
+- Star ratings (1-5 stars)
+- Author images with fallback backgrounds
+- Block-based system (add unlimited testimonials)
+- Auto-rotate option (optional)
+- Fade-in animations
+- Mobile responsive
+
+**Tech:** Shopify Liquid, CSS3, JavaScript  
+**Location:** `/testimonial-carousel/testimonial-carousel.liquid`
 
 ---
 
 ### 4. Before/After Slider
-(Coming soon)
+Interactive image comparison slider for showcasing transformations.
+
+**Features:**
+- Draggable slider handle for image comparison
+- Click anywhere to jump positions
+- Touch support for mobile devices
+- Custom before/after labels
+- Smooth clip-path transitions
+- Optional additional description
+- Visual button indicator
+- Fade-in animations
+
+**Tech:** Shopify Liquid, CSS3, JavaScript  
+**Location:** `/before-after-slider/before-after-slider.liquid`
 
 ---
 
@@ -82,14 +108,14 @@ All changes are real-time in the theme editor.
 
 ## Features Across All Sections
 
-✔️ Smooth animations and transitions  
-✔️ Mobile-first responsive design  
-✔️ Performance optimized  
-✔️ Accessibility compliant (WCAG)  
-✔️ Respects `prefers-reduced-motion`  
-✔️ Full theme editor customization  
-✔️ No external dependencies  
-✔️ Clean, documented code  
+✅ Smooth animations and transitions  
+✅ Mobile-first responsive design  
+✅ Performance optimized  
+✅ Accessibility compliant (WCAG)  
+✅ Respects `prefers-reduced-motion`  
+✅ Full theme editor customization  
+✅ No external dependencies  
+✅ Clean, documented code  
 
 ---
 
@@ -156,7 +182,7 @@ Shopify Theme Developer | React Developer
 
 **Links:**
 - GitHub: https://github.com/Abdul102-ux
-- Upwork: [Your Upwork Profile]
+- Upwork: https://www.upwork.com/freelancers/~01592be08464fa6112?mp_source=share
 
 ---
 
