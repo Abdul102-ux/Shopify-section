@@ -1,8 +1,14 @@
-# Shopify Custom Sections Portfolio
+# Shopify Custom Development Portfolio
 
-A collection of production-ready custom Shopify sections built with Liquid, CSS3, and JavaScript. Each section is fully customizable through the Shopify theme editor.
+A collection of production-ready custom Shopify sections and page templates built with Liquid, CSS3, and JavaScript. Each component is fully customizable through the Shopify theme editor.
 
-## Sections Included
+## What's Included
+
+### Custom Sections (4)
+Reusable sections that can be added to any page.
+
+### Page Templates (2)
+Complete page layouts for specific use cases.
 
 ### 1. Advanced Hero
 Premium hero section with video backgrounds, parallax scrolling, and smooth animations.
@@ -108,14 +114,14 @@ All changes are real-time in the theme editor.
 
 ## Features Across All Sections
 
-✅ Smooth animations and transitions  
-✅ Mobile-first responsive design  
-✅ Performance optimized  
-✅ Accessibility compliant (WCAG)  
-✅ Respects `prefers-reduced-motion`  
-✅ Full theme editor customization  
-✅ No external dependencies  
-✅ Clean, documented code  
+ - Smooth animations and transitions  
+ - Mobile-first responsive design  
+ - Performance optimized  
+ - Accessibility compliant (WCAG)  
+ - Respects `prefers-reduced-motion`  
+ - Full theme editor customization  
+ - No external dependencies  
+ - Clean, documented code  
 
 ---
 
@@ -191,7 +197,7 @@ Shopify Theme Developer | React Developer
 ### v1.0 (Current)
 - Advanced Hero Section
 - Product Grid Section
-
-### v1.1 (Upcoming)
 - Testimonial Carousel Section
 - Before/After Slider Section
+
+All sections production-ready and fully tested.
