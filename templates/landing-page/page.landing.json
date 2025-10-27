@@ -1,0 +1,236 @@
+{
+  "sections": {
+    "hero": {
+      "type": "advanced-hero",
+      "settings": {
+        "heading": "Transform Your Business Today",
+        "description": "Join thousands of satisfied customers who've already made the switch",
+        "height_mobile": 500,
+        "height_desktop": 650,
+        "content_alignment": "center",
+        "enable_parallax": false,
+        "gradient_overlay": true,
+        "overlay_opacity": 50,
+        "text_color": "#ffffff",
+        "button_primary_bg": "#ffffff",
+        "button_primary_text": "#000000",
+        "show_scroll_indicator": true
+      },
+      "blocks": {
+        "subheading": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Limited Time Offer"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Transform Your Business Today"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Discover how our solution can help you achieve your goals faster</p>"
+          }
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Get Started",
+            "button_link_1": "",
+            "button_style_1": "primary",
+            "button_label_2": "Learn More",
+            "button_link_2": "",
+            "button_style_2": "outline"
+          }
+        }
+      },
+      "block_order": [
+        "subheading",
+        "heading",
+        "text",
+        "buttons"
+      ]
+    },
+    "features": {
+      "type": "multicolumn",
+      "settings": {
+        "title": "Why Choose Us",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      },
+      "blocks": {
+        "feature_1": {
+          "type": "column",
+          "settings": {
+            "title": "Fast Delivery",
+            "text": "<p>Get your products delivered within 2-3 business days</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "feature_2": {
+          "type": "column",
+          "settings": {
+            "title": "Premium Quality",
+            "text": "<p>All products are carefully selected and tested for quality</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "feature_3": {
+          "type": "column",
+          "settings": {
+            "title": "24/7 Support",
+            "text": "<p>Our team is always here to help you with any questions</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3"
+      ]
+    },
+    "products": {
+      "type": "product-grid",
+      "settings": {
+        "heading": "Featured Products",
+        "description": "Check out our most popular items",
+        "show_header": true,
+        "heading_alignment": "center",
+        "columns_desktop": 4,
+        "products_limit": 8,
+        "heading_color": "#000000",
+        "description_color": "#666666",
+        "text_color": "#000000",
+        "price_color": "#000000",
+        "card_bg": "#fafafa",
+        "badge_bg": "#e74c3c",
+        "badge_text": "#ffffff",
+        "button_bg": "#000000",
+        "button_text": "#ffffff",
+        "button_label": "View Product"
+      }
+    },
+    "testimonials": {
+      "type": "testimonial-carousel",
+      "settings": {
+        "heading": "What Our Customers Say",
+        "description": "Real feedback from satisfied clients",
+        "bg_color": "#f9f9f9",
+        "heading_color": "#000000",
+        "description_color": "#666666",
+        "card_bg": "#ffffff",
+        "text_color": "#000000",
+        "star_color": "#ffc107",
+        "button_color": "#000000",
+        "author_bg": "#e0e0e0",
+        "auto_rotate": false,
+        "auto_rotate_delay": 5
+      },
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial": "Amazing service! The product exceeded my expectations and delivery was super fast.",
+            "rating": 5,
+            "author_name": "Sarah Johnson",
+            "author_title": "Verified Customer"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial": "Great quality and excellent customer support. Highly recommend this store!",
+            "rating": 5,
+            "author_name": "Michael Chen",
+            "author_title": "Verified Customer"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial": "Best purchase I've made this year. The team was incredibly helpful throughout.",
+            "rating": 5,
+            "author_name": "Emma Williams",
+            "author_title": "Verified Customer"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3"
+      ]
+    },
+    "cta": {
+      "type": "image-with-text",
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 60
+      },
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ready to Get Started?",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Join thousands of customers who trust us for quality products and exceptional service.</p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "features",
+    "products",
+    "testimonials",
+    "cta"
+  ]
+}
